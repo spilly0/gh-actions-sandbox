@@ -6,10 +6,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
       - name: Install dependecies
         run: npm ci
+
       - name: Run build
         run: npm run build
+
+      - name: Upload static files as artifacts
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: /dist
+
+      - name: Print static files
+        run: echo '${{steps.deployment.outputs}}'
+
       - name: Print list of dist files
         run: |
           cd dist
