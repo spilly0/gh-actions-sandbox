@@ -19,10 +19,20 @@ jobs:
         with:
           path: dist/
 
-      - name: Print static files
-        run: echo '${{steps.deployment.outputs.page_url}}'
-
       - name: Print list of dist files
         run: |
           cd dist
           ls
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to Github pages
+        id: deployment
+        uses: actions/deploy-pages@v4
