@@ -20,7 +20,7 @@ jobs:
           path: dist/
 
       - name: Print static files
-        run: echo '${{steps.deployment.outputs}}'
+        run: echo '${{steps.deployment.outputs.page_url}}'
 
       - name: Print list of dist files
         run: |
