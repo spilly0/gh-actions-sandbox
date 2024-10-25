@@ -1,8 +1,16 @@
-name: Deploy Test Site
+name: Deploy Site
 on: push
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Test step
-        run: echo "Hello, this test flow is working."
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install dependecies
+        run: npm ci
+      - name: Run build
+        run: npm run build
+      - name: Print list of dist files
+        run: |
+          cd dist
+          ls
