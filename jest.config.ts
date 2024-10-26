@@ -4,6 +4,6 @@ export default {
   moduleNameMapper: {
     "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__mocks__/fileMock.js", // The global stub for weird files
     "\\.(css|less|sass|scss)$": "identity-obj-proxy", // The mock for style related files
-    "^@/(.*)$": "<rootDir>/src/$1", // [optional] Are you using aliases?
+    // "^@/(.*)$": "<rootDir>/src/$1", // [optional] Are you using aliases?
   },
 };
