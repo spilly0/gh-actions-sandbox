@@ -10,4 +10,3 @@ jobs:
       - name: List Github Info
         run: |
           echo "${{toJSON(github)}}"
-          echo "test"
