@@ -1,0 +1,22 @@
+name: Open Pull Request
+on:
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - edited
+jobs:
+  check-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR info
+        run: echo "${{toJSON(github)}}"
+      # Want to check the head_ref "dev" and base_ref "main"
+      # I want staging -> main, dev -> staging, and then anything goes into dev
+      - name: Check PR Source and Destination
+        run: |
+          if [[${{github.head_ref}} != 'dev'] && [${{ github.base_ref}} == 'staging']] || [[${{github.head_ref}} != 'staging'] && [${{github.base_ref}} == 'main']]; then 
+            echo "Merge requests to main branch are only allowed from dev branch, and the title must include 'feature'."
+            exit 1
+          fi
