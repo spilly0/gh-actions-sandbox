@@ -1,0 +1,18 @@
+name: Staging Check Base Branch
+
+on:
+  pull_request:
+    branches:
+      - staging
+      - main
+    types: [synchronize, edited, opened]
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Incorrect Head Branch
+        if: ${{github.base_ref == 'main' && github.head_ref != 'staging'}}
+        run: |
+          echo "Error: Pull requests to staging must be from the main branch."
+          exit 1
