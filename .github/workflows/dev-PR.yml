@@ -1,0 +1,16 @@
+name: Staging Check Base Branch
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if head branch is correct
+        if: github.base_ref != 'staging'
+        run: |
+          echo "Error: Pull requests to staging must be from the main branch."
+          exit 1
