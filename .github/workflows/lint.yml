@@ -16,4 +16,4 @@ jobs:
       - name: Install Node Modules
         run: npm ci
       - name: Run Linter
-        uses: stefanoeb/eslint-action@1.0.2
+        uses: npm run lint
