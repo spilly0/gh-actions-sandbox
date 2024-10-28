@@ -1,11 +1,6 @@
-name: Test
+name: Lint
 
-on:
-  pull_request:
-    branches:
-      - dev
-      - staging
-      - main
+on: [push]
 
 jobs:
   eslint:
@@ -20,5 +15,5 @@ jobs:
           cache: "npm"
       - name: Install Node Modules
         run: npm ci
-      - name: Run Tests
-        run: npm run test
+      - name: Run Linter
+        uses: npm run lint
