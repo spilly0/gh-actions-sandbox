@@ -21,4 +21,4 @@ jobs:
       - name: Install Node Modules
         run: npm ci
       - name: Run Linter
-        uses: npm run lint
+        run: npm run lint
