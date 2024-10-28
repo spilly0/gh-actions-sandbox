@@ -6,5 +6,14 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: stefanoeb/eslint-action@1.0.2
+      - name: Checkout Repo
+        uses: actions/checkout@v1
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+      - name: Install Node Modules
+        run: npm ci
+      - name: Run Linter
+        uses: stefanoeb/eslint-action@1.0.2
