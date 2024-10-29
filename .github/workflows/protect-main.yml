@@ -3,7 +3,6 @@ name: Staging Check Base Branch
 on:
   pull_request:
     branches:
-      - staging
       - main
     types: [synchronize, edited, opened]
 
