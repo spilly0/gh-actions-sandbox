@@ -2,7 +2,7 @@ name: Run Tests in Docker
 on: workflow_dispatch
 env:
   # Setting an environment variable with the value of a configuration variable
-  env_var: ${{ vars.TEST }}
+  TEST: ${{ vars.TEST }}
 jobs:
   docker-test:
     runs-on: ubuntu-latest
