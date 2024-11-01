@@ -11,4 +11,8 @@ describe("App.test.tsx", () => {
       screen.getByRole("heading", { name: /Vite \+ React/i })
     ).toBeInTheDocument();
   });
+
+  it("Environment variables should match", () => {
+    expect(process.env.TEST).toEqual("this test is working");
+  });
 });
